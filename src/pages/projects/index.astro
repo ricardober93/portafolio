@@ -58,8 +58,11 @@ const copy = getLocaleData(locale);
   }
 
   .archive-title {
-    max-width: 32rem;
-    font-size: clamp(3.6rem, 8vw, 7rem);
+    max-width: 12ch;
+    font-size: clamp(2.8rem, 8vw, 7rem);
+    line-height: 0.88;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
 
   .archive-grid {
@@ -68,6 +71,7 @@ const copy = getLocaleData(locale);
     gap: 24px 32px;
     border-top: 1px solid var(--line);
     border-left: 1px solid var(--line);
+    min-width: 0;
   }
 
   .archive-footer__inner {
@@ -102,6 +106,13 @@ const copy = getLocaleData(locale);
 
     .archive-grid {
       gap: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .archive-title {
+      max-width: 10ch;
+      font-size: clamp(2.4rem, 13vw, 4.2rem);
     }
   }
 </style>

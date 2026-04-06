@@ -37,12 +37,14 @@ const { project, locale = "en" } = Astro.props as {
 <style>
     .project-card {
         border-top: 1px solid var(--line);
+        min-width: 0;
     }
     .project-link {
         display: flex;
         flex-direction: column;
         gap: 18px;
         padding: 16px 20px;
+        min-width: 0;
     }
     .project-top,
     .project-bottom {
@@ -50,6 +52,8 @@ const { project, locale = "en" } = Astro.props as {
         justify-content: space-between;
         align-items: center;
         gap: 12px;
+        min-width: 0;
+        flex-wrap: wrap;
     }
     .project-year,
     .project-bottom {
@@ -66,11 +70,13 @@ const { project, locale = "en" } = Astro.props as {
         line-height: 0.9;
         letter-spacing: -0.05em;
         font-size: clamp(1.9rem, 3.8vw, 3.2rem);
+        overflow-wrap: anywhere;
     }
     p {
         margin: 0;
         color: var(--muted);
         line-height: 1.65;
         max-width: 23rem;
+        overflow-wrap: anywhere;
     }
 </style>
