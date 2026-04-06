@@ -1,10 +1,11 @@
 ---
-const { eyebrow, title, lead, align = 'left' } = Astro.props;
+const { eyebrow, title, lead, align = 'left', level = 2 } = Astro.props;
+const HeadingTag = level === 1 ? 'h1' : 'h2';
 ---
 
 <header class={`section-heading ${align}`}>
   <p class="eyebrow">{eyebrow}</p>
-  <h2 class="display">{title}</h2>
+  <HeadingTag class="display">{title}</HeadingTag>
   {lead && <p class="lead">{lead}</p>}
 </header>
 
@@ -12,8 +13,8 @@ const { eyebrow, title, lead, align = 'left' } = Astro.props;
   .section-heading {
     display: grid;
     gap: 12px;
-    max-width: 720px;
-    margin-bottom: 32px;
+    max-width: 700px;
+    margin-bottom: 28px;
   }
   .section-heading.center {
     text-align: center;
@@ -21,6 +22,6 @@ const { eyebrow, title, lead, align = 'left' } = Astro.props;
     margin-right: auto;
   }
   .display {
-    font-size: clamp(2.8rem, 7vw, 6.3rem);
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
   }
 </style>

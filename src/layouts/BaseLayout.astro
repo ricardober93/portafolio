@@ -1,28 +1,61 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import { getLocale, localeData } from '@/data/site';
 import '../styles/global.css';
 
+const locale = getLocale(Astro.currentLocale);
+const copy = localeData[locale];
+
 const {
-  title = 'Ricardo Tellez',
-  description = 'Portafolio bilingüe de producto, diseño y desarrollo.',
+  title = copy.site.name,
+  description = copy.site.description,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6f2ea" />
+    <meta name="theme-color" content="#f7f7f4" />
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link focus-ring" href="#content">{locale === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
     <Header />
-    <main>
+    <main id="content" class="page-main">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    z-index: 100;
+    padding: 10px 14px;
+    background: var(--ink);
+    color: white;
+    border-radius: 2px;
+    transform: translateY(-140%);
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .page-main {
+    width: min(calc(100% - 24px), var(--container));
+    margin: 0 auto;
+  }
+
+  .page-main :global(.shell) {
+    width: 100%;
+  }
+</style>
