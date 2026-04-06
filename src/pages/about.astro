@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { manifesto, site } from '@/data/site';
+---
+
+<BaseLayout title={`About | ${site.name}`} description="Sobre mi experiencia, enfoque y forma de trabajar.">
+  <section class="section">
+    <div class="shell about-layout">
+      <div class="about-portrait panel">
+        <p class="eyebrow">About / Contact</p>
+        <h1 class="display">Subtractive logic, but personal.</h1>
+        <p class="lead">
+          Construyo productos digitales que conectan estrategia de negocio con experiencia de usuario.
+          Mi base en diseño gráfico me da una perspectiva diferente: no solo desarrollo funcionalidades,
+          diseño sistemas que las personas quieren usar.
+        </p>
+      </div>
+
+      <div class="about-copy">
+        <SectionHeading
+          eyebrow="Profile"
+          title="Más claro, más fuerte y más orientado a valor."
+          lead="Este perfil resume tu propuesta de forma más directa y profesional."
+        />
+
+        <div class="bio panel">
+          <p>
+            Con más de 5 años de experiencia en React, Angular y Node.js, integro IA de forma práctica
+            en cada etapa del desarrollo: genero y reviso código con mayor velocidad, tomo decisiones de
+            arquitectura apoyadas en datos, diseño interfaces asistidas por IA y conecto APIs como OpenAI
+            para construir soluciones inteligentes desde el primer sprint.
+          </p>
+
+          <p class="bio-highlight">
+            Pienso desde los requerimientos del producto, no solo desde el código. Uso IA como multiplicador
+            real de productividad y calidad. Combino visión técnica con criterio de diseño y negocio.
+          </p>
+
+          <ul class="manifesto-list">
+            {manifesto.map((item, index) => (
+              <li class="manifesto-item panel">
+                <span class="manifesto-index">0{index + 1}</span>
+                <p>{item}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .about-portrait {
+    padding: 34px;
+    min-height: 100%;
+    display: grid;
+    gap: 18px;
+    align-content: start;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.65)),
+      radial-gradient(circle at top, rgba(17, 17, 17, 0.08), transparent 38%);
+  }
+  .about-portrait h1 {
+    font-size: clamp(3.8rem, 8vw, 7rem);
+    max-width: 10ch;
+  }
+  .about-copy {
+    display: grid;
+    gap: 18px;
+  }
+  .bio {
+    padding: 30px;
+    display: grid;
+    gap: 20px;
+  }
+  .bio p {
+    margin: 0;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .bio-highlight {
+    font-size: 1.08rem;
+    color: var(--ink);
+  }
+  .manifesto-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .manifesto-item {
+    padding: 20px;
+    min-height: 180px;
+  }
+  .manifesto-item p {
+    margin: 16px 0 0;
+  }
+  @media (max-width: 1000px) {
+    .about-layout,
+    .manifesto-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

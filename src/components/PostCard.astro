@@ -1,0 +1,58 @@
+---
+const { post } = Astro.props;
+---
+
+<article class="post-row rule">
+  <a class="post-link" href={`/blog/${post.slug}`}>
+    <div>
+      <p class="eyebrow">{post.category}</p>
+      <h3>{post.title}</h3>
+      <p class="post-summary">{post.summary}</p>
+    </div>
+    <div class="post-meta">
+      <span>{post.date}</span>
+      <span>{post.readTime}</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .post-link {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    align-items: end;
+  }
+  h3 {
+    margin: 6px 0 10px;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+  }
+  .post-summary {
+    margin: 0;
+    max-width: 60ch;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .post-meta {
+    display: grid;
+    gap: 8px;
+    justify-items: end;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 700px) {
+    .post-link {
+      grid-template-columns: 1fr;
+    }
+    .post-meta {
+      justify-items: start;
+    }
+  }
+</style>

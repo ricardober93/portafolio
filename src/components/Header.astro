@@ -1,0 +1,110 @@
+---
+import ResponsiveMenu from './ResponsiveMenu';
+import { navigation, site } from '@/data/site';
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand focus-ring" href="/" aria-label={site.name}>
+      <span class="brand-mark">RT</span>
+      <span>
+        <strong>{site.name}</strong>
+        <small>{site.role}</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {navigation.map((item) => (
+        <a class="nav-link focus-ring" href={item.href}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <a class="button secondary focus-ring" href="/contact">
+        Contacto
+      </a>
+      <ResponsiveMenu client:load />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background: rgba(246, 242, 234, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 240px;
+  }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: white;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+  }
+  .brand strong,
+  .brand small {
+    display: block;
+  }
+  .brand strong {
+    font-size: 0.95rem;
+    letter-spacing: -0.02em;
+  }
+  .brand small {
+    font-size: 0.74rem;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-link {
+    font-size: 0.94rem;
+    color: var(--muted);
+    transition: color 180ms ease;
+  }
+  .nav-link:hover {
+    color: var(--ink);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  @media (max-width: 900px) {
+    .desktop-nav,
+    .header-actions .button.secondary {
+      display: none;
+    }
+    .brand {
+      min-width: auto;
+    }
+  }
+</style>

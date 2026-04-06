@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { referenceSlides, site } from '@/data/site';
+---
+
+<BaseLayout title={`References | ${site.name}`} description="Evaluación visual de los assets incluidos en el ZIP.">
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Reference board"
+        title="Evaluación visual del ZIP."
+        lead="Página de apoyo para revisar los frames incluidos y mantener trazabilidad del sistema visual que inspiró el sitio."
+      />
+
+      <div class="refs-grid">
+        {referenceSlides.map((item) => (
+          <article class="ref-card panel">
+            <img src={`/reference/${item.slug}.png`} alt={item.title} loading="lazy" />
+            <div class="ref-copy">
+              <p class="eyebrow">{item.title}</p>
+              <p>{item.caption}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .refs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .ref-card {
+    overflow: hidden;
+  }
+  .ref-card img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-bottom: 1px solid var(--line);
+  }
+  .ref-copy {
+    padding: 18px 20px 20px;
+  }
+  .ref-copy p:last-child {
+    margin: 10px 0 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 800px) {
+    .refs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

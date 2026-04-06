@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { posts, site } from '@/data/site';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={`${post.title} | ${site.name}`} description={post.summary}>
+  <section class="section">
+    <div class="shell article-layout">
+      <article class="article panel">
+        <p class="eyebrow">{post.category}</p>
+        <h1 class="display">{post.title}</h1>
+        <p class="lead">{post.summary}</p>
+
+        <div class="article-meta">
+          <span>{post.date}</span>
+          <span>{post.readTime}</span>
+        </div>
+
+        <div class="article-body">
+          {post.content.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </article>
+
+      <aside class="article-side panel">
+        <p class="eyebrow">Tags</p>
+        <div class="tag-list">
+          {post.tags.map((tag) => (
+            <span class="chip">{tag}</span>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1.25fr 0.55fr;
+    gap: 18px;
+  }
+  .article,
+  .article-side {
+    padding: 30px;
+  }
+  .article h1 {
+    font-size: clamp(3.8rem, 9vw, 7rem);
+    max-width: 12ch;
+    margin: 10px 0 12px;
+  }
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .article-body {
+    margin-top: 30px;
+    max-width: 72ch;
+    display: grid;
+    gap: 18px;
+  }
+  .article-body p {
+    margin: 0;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .article-side {
+    align-self: start;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

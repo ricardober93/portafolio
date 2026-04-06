@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { projects, site } from '@/data/site';
+---
+
+<BaseLayout title={`Proyectos | ${site.name}`} description="Proyectos destacados y casos de estudio.">
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Projects archive"
+        title="Archivo de proyectos."
+        lead="Una selección de productos, sistemas y experimentos que muestran criterio, ejecución y narrativa."
+      />
+
+      <div class="archive-grid">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  @media (max-width: 800px) {
+    .archive-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

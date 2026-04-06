@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import PostCard from '@/components/PostCard.astro';
+import { posts, site } from '@/data/site';
+---
+
+<BaseLayout title={`Blog | ${site.name}`} description="Notas sobre producto, IA y frontend.">
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="The log"
+        title="Ideas y procesos."
+        lead="Textos breves sobre decisiones de diseño, desarrollo y cómo usar IA sin perder criterio."
+      />
+
+      <div class="blog-index panel">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding: 0 24px;
+  }
+</style>

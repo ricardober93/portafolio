@@ -1,0 +1,283 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import PostCard from '@/components/PostCard.astro';
+import { manifesto, posts, projects, site, stats } from '@/data/site';
+
+const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+---
+
+<BaseLayout title={`${site.name} | ${site.role}`} description={site.description}>
+  <section class="hero section">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Portfolio / Product / Design / Code</p>
+        <h1 class="display hero-title">{site.headline}</h1>
+        <p class="lead hero-lead">{site.subheadline}</p>
+
+        <div class="hero-actions">
+          <a class="button focus-ring" href="/projects">Ver proyectos</a>
+          <a class="button secondary focus-ring" href="/contact">Hablemos</a>
+        </div>
+      </div>
+
+      <aside class="hero-aside panel">
+        <div>
+          <p class="eyebrow">Featured project</p>
+          <h2>{featuredProject?.title}</h2>
+          <p>{featuredProject?.summary}</p>
+        </div>
+        <div class="hero-aside__meta">
+          <span>{site.location}</span>
+          <span>Bilingual / Editorial / Responsive</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Core value"
+        title="Strategy, UX and engineering in one system."
+        lead="Cada proyecto mezcla pensamiento de producto, cuidado visual y ejecución técnica para llegar más lejos que una simple landing."
+      />
+
+      <div class="stats-grid">
+        {stats.map((stat) => (
+          <article class="stat panel">
+            <strong>{stat.value}</strong>
+            <p>{stat.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Selected work"
+        title="Proyectos que cuentan una historia."
+        lead="Un sistema editorial para presentar productos, procesos y resultados con claridad."
+      />
+
+      <div class="projects-grid">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell manifesto-grid">
+      <div>
+        <SectionHeading
+          eyebrow="Manifesto"
+          title="Mi forma de trabajar."
+          lead="Lo que me diferencia no es solo la herramienta, sino la manera de decidir."
+        />
+      </div>
+
+      <ul class="manifesto-list">
+        {manifesto.map((item, index) => (
+          <li class="manifesto-item panel">
+            <span class="manifesto-index">0{index + 1}</span>
+            <p>{item}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Writing"
+        title="Blog y pensamiento."
+        lead="Ideas cortas para explicar cómo combino diseño, IA y desarrollo en mi flujo."
+      />
+
+      <div class="blog-list panel">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell cta panel">
+      <div>
+        <p class="eyebrow">Let's build</p>
+        <h2 class="display">Diseñemos algo con intención.</h2>
+      </div>
+      <div class="cta-actions">
+        <a class="button focus-ring" href="/contact">Contacto</a>
+        <a class="button secondary focus-ring" href="https://www.linkedin.com/in/ricardotellez7/" target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: 56px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .hero-copy {
+    padding: 28px 0;
+    display: grid;
+    align-content: center;
+    gap: 22px;
+  }
+  .hero-title {
+    font-size: clamp(3.8rem, 9vw, 8rem);
+    max-width: 13ch;
+  }
+  .hero-lead {
+    max-width: 48ch;
+  }
+  .hero-actions,
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero-aside {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 420px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5)),
+      radial-gradient(circle at top, rgba(17, 17, 17, 0.08), transparent 42%);
+  }
+  .hero-aside h2 {
+    margin: 10px 0;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 0.92;
+  }
+  .hero-aside p {
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .hero-aside__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .stat {
+    padding: 24px;
+  }
+  .stat strong {
+    display: block;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 0.95;
+  }
+  .stat p {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .manifesto-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .manifesto-item {
+    padding: 24px;
+    min-height: 220px;
+  }
+  .manifesto-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .manifesto-item p {
+    margin: 18px 0 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .blog-list {
+    padding: 0 24px;
+  }
+  .cta {
+    padding: 32px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.74)),
+      radial-gradient(circle at left top, rgba(17, 17, 17, 0.08), transparent 44%);
+  }
+  .cta h2 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-top: 8px;
+  }
+  @media (max-width: 1000px) {
+    .hero-grid,
+    .manifesto-grid,
+    .stats-grid,
+    .projects-grid,
+    .manifesto-list,
+    .cta {
+      grid-template-columns: 1fr;
+      flex-direction: column;
+    }
+    .hero-aside {
+      min-height: 320px;
+    }
+  }
+  @media (max-width: 700px) {
+    .hero {
+      padding-top: 24px;
+    }
+    .blog-list {
+      padding: 0 18px;
+    }
+    .cta {
+      padding: 24px;
+    }
+  }
+</style>

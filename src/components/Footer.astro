@@ -1,0 +1,84 @@
+---
+import { featuredLinks, site } from '@/data/site';
+---
+
+<footer class="site-footer section">
+  <div class="shell footer-inner rule">
+    <div>
+      <p class="eyebrow">Contacto</p>
+      <p class="footer-copy">
+        {site.description}
+      </p>
+    </div>
+
+    <div class="footer-links">
+      {featuredLinks.map((item) => (
+        <a class="footer-link focus-ring" href={item.href} target="_blank" rel="noreferrer">
+          {item.label}
+        </a>
+      ))}
+      <a class="footer-link focus-ring" href={`mailto:${site.email}`}>
+        {site.email}
+      </a>
+    </div>
+  </div>
+
+  <div class="shell footer-meta">
+    <span>{site.location}</span>
+    <span>Astro + Preact + Vercel</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-bottom: 28px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    padding-top: 28px;
+  }
+  .footer-copy {
+    max-width: 58ch;
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
+    justify-content: flex-end;
+  }
+  .footer-link {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.72);
+    font-size: 0.92rem;
+  }
+  .footer-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  @media (max-width: 900px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+    .footer-links {
+      justify-content: flex-start;
+    }
+    .footer-meta {
+      flex-direction: column;
+    }
+  }
+</style>

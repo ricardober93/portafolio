@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+---
+
+<BaseLayout title={`Contacto | ${site.name}`} description="Contacta a Ricardo Tellez.">
+  <section class="section">
+    <div class="shell contact-layout panel">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h1 class="display">Let’s start a new chapter.</h1>
+        <p class="lead">
+          Busco equipos donde la tecnología se construya con intención y los resultados importen.
+          Si quieres trabajar algo serio, elegante y útil, conversemos.
+        </p>
+      </div>
+
+      <div class="contact-box">
+        <a class="button focus-ring" href={`mailto:${site.email}`}>{site.email}</a>
+        <a class="button secondary focus-ring" href="https://www.linkedin.com/in/ricardotellez7/" target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+        <a class="button secondary focus-ring" href="https://lector-novelas-online.vercel.app/" target="_blank" rel="noreferrer">
+          Panels
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-layout {
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+      radial-gradient(circle at left top, rgba(17, 17, 17, 0.08), transparent 44%);
+  }
+  .contact-layout h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    max-width: 11ch;
+    margin: 10px 0 12px;
+  }
+  .contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  @media (max-width: 900px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
