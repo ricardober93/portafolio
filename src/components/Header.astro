@@ -1,31 +1,63 @@
 ---
 import ResponsiveMenu from './ResponsiveMenu';
-import { navigation, site } from '@/data/site';
+import { getLocale, getLocaleData, localizeHref, stripLocalePrefix } from '@/data/site';
+
+const pathname = Astro.url.pathname;
+const locale = getLocale(Astro.currentLocale);
+const copy = getLocaleData(locale);
+const currentPath = stripLocalePrefix(pathname);
+const englishHref = localizeHref('en', currentPath);
+const spanishHref = localizeHref('es', currentPath);
 ---
 
 <header class="site-header">
   <div class="shell header-inner">
-    <a class="brand focus-ring" href="/" aria-label={site.name}>
-      <span class="brand-mark">RT</span>
-      <span>
-        <strong>{site.name}</strong>
-        <small>{site.role}</small>
+    <a class="brand focus-ring" href={localizeHref(locale, '/')} aria-label={copy.site.name}>
+      <span class="brand-mark">RB</span>
+      <span class="brand-copy">
+        <strong>{copy.site.name}</strong>
+        <small>{copy.site.role}</small>
       </span>
     </a>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
-      {navigation.map((item) => (
-        <a class="nav-link focus-ring" href={item.href}>
-          {item.label}
-        </a>
-      ))}
+      {copy.navigation.map((item) => {
+        const active = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+
+        return (
+          <a
+            class={`nav-link focus-ring ${active ? 'active' : ''}`}
+            href={localizeHref(locale, item.href)}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.label[locale]}
+          </a>
+        );
+      })}
     </nav>
 
     <div class="header-actions">
-      <a class="button secondary focus-ring" href="/contact">
-        Contacto
-      </a>
-      <ResponsiveMenu client:load />
+      <div class="locale-switcher" aria-label="Language switcher">
+        <a class={`locale-link focus-ring ${locale === 'en' ? 'active' : ''}`} href={englishHref} aria-current={locale === 'en' ? 'page' : undefined}>
+          EN
+        </a>
+        <a class={`locale-link focus-ring ${locale === 'es' ? 'active' : ''}`} href={spanishHref} aria-current={locale === 'es' ? 'page' : undefined}>
+          ES
+        </a>
+      </div>
+      <ResponsiveMenu
+        client:load
+        locale={locale}
+        navigation={copy.navigation.map((item) => ({
+          href: item.href,
+          label: item.label[locale],
+        }))}
+        featuredLinks={copy.featuredLinks}
+        menuLabel={locale === 'en' ? 'Menu' : 'Menú'}
+        closeLabel={locale === 'en' ? 'Close' : 'Cerrar'}
+        navigationLabel={locale === 'en' ? 'Navigation' : 'Navegación'}
+        ariaLabel={locale === 'en' ? 'Mobile navigation' : 'Navegación móvil'}
+      />
     </div>
   </div>
 </header>
@@ -38,8 +70,7 @@ import { navigation, site } from '@/data/site';
     height: var(--header-height);
     display: flex;
     align-items: center;
-    background: rgba(246, 242, 234, 0.8);
-    backdrop-filter: blur(12px);
+    background: rgba(247, 247, 244, 0.94);
     border-bottom: 1px solid var(--line);
   }
   .header-inner {
@@ -52,14 +83,14 @@ import { navigation, site } from '@/data/site';
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    min-width: 240px;
+    min-width: 220px;
   }
   .brand-mark {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
     background: var(--ink);
     color: white;
     font-family: 'IBM Plex Mono', monospace;
@@ -70,11 +101,12 @@ import { navigation, site } from '@/data/site';
     display: block;
   }
   .brand strong {
-    font-size: 0.95rem;
-    letter-spacing: -0.02em;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
   .brand small {
-    font-size: 0.74rem;
+    font-size: 0.68rem;
     color: var(--muted);
     font-family: 'IBM Plex Mono', monospace;
     text-transform: uppercase;
@@ -83,28 +115,73 @@ import { navigation, site } from '@/data/site';
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 26px;
   }
   .nav-link {
-    font-size: 0.94rem;
+    position: relative;
+    padding: 8px 0;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--muted);
-    transition: color 180ms ease;
+    transition: color 160ms ease;
   }
   .nav-link:hover {
     color: var(--ink);
+  }
+  .nav-link.active {
+    color: var(--ink);
+  }
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--ink);
   }
   .header-actions {
     display: flex;
     align-items: center;
     gap: 12px;
   }
+  .locale-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--surface);
+  }
+  .locale-link {
+    min-width: 34px;
+    padding: 7px 9px;
+    border-radius: 1px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--muted);
+  }
+  .locale-link.active {
+    background: var(--ink);
+    color: white;
+  }
   @media (max-width: 900px) {
-    .desktop-nav,
-    .header-actions .button.secondary {
+    .desktop-nav {
       display: none;
     }
     .brand {
       min-width: auto;
+    }
+    .brand-copy small {
+      display: none;
+    }
+    .locale-switcher {
+      display: none;
     }
   }
 </style>

@@ -1,17 +1,29 @@
 ---
-const { post } = Astro.props;
+import { localizeHref, type Locale } from '@/data/site';
+
+const { post, locale = 'en' } = Astro.props as {
+  post: {
+    slug: string;
+    category: { en: string; es: string };
+    title: { en: string; es: string };
+    summary: { en: string; es: string };
+    date: string;
+    readTime: { en: string; es: string };
+  };
+  locale?: Locale;
+};
 ---
 
-<article class="post-row rule">
-  <a class="post-link" href={`/blog/${post.slug}`}>
+<article class="post-row">
+  <a class="post-link" href={localizeHref(locale, `/blog/${post.slug}`)}>
     <div>
-      <p class="eyebrow">{post.category}</p>
-      <h3>{post.title}</h3>
-      <p class="post-summary">{post.summary}</p>
+      <p class="eyebrow">{post.category[locale]}</p>
+      <h3>{post.title[locale]}</h3>
+      <p class="post-summary">{post.summary[locale]}</p>
     </div>
     <div class="post-meta">
       <span>{post.date}</span>
-      <span>{post.readTime}</span>
+      <span>{post.readTime[locale]}</span>
     </div>
   </a>
 </article>
@@ -19,22 +31,24 @@ const { post } = Astro.props;
 <style>
   .post-link {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 24px;
-    padding: 22px 0;
+    padding: 24px 0;
     align-items: end;
+    border-top: 1px solid var(--line);
   }
   h3 {
     margin: 6px 0 10px;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    line-height: 0.95;
+    font-size: clamp(1.7rem, 2.8vw, 2.8rem);
+    line-height: 0.92;
     text-transform: uppercase;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
+    letter-spacing: -0.05em;
   }
   .post-summary {
     margin: 0;
-    max-width: 60ch;
-    line-height: 1.7;
+    max-width: 31rem;
+    line-height: 1.65;
     color: var(--muted);
   }
   .post-meta {

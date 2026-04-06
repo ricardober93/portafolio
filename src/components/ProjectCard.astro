@@ -1,61 +1,76 @@
 ---
-const { project } = Astro.props;
+import { localizeHref, type Locale } from "@/data/site";
+
+const { project, locale = "en" } = Astro.props as {
+    project: {
+        slug: string;
+        category: { en: string; es: string };
+        title: { en: string; es: string };
+        summary: { en: string; es: string };
+        year: string;
+        status: { en: string; es: string };
+    };
+    locale?: Locale;
+};
 ---
 
-<article class="project-card panel">
-  <a class="project-link" href={`/projects/${project.slug}`}>
-    <div class="project-top">
-      <span class="eyebrow">{project.category}</span>
-      <span class="project-year">{project.year}</span>
-    </div>
+<article class="project-card">
+    <a
+        class="project-link"
+        href={localizeHref(locale, `/projects/${project.slug}`)}
+    >
+        <div class="project-top">
+            <span class="eyebrow">{project.category[locale]}</span>
+            <span class="project-year">{project.year}</span>
+        </div>
 
-    <h3>{project.title}</h3>
-    <p>{project.summary}</p>
+        <h3>{project.title[locale]}</h3>
+        <p>{project.summary[locale]}</p>
 
-    <div class="project-bottom">
-      <span>{project.status}</span>
-      <span aria-hidden="true">↗</span>
-    </div>
-  </a>
+        <div class="project-bottom">
+            <span>{project.status[locale]}</span>
+            <span aria-hidden="true">{locale === "en" ? "View" : "Ver"}</span>
+        </div>
+    </a>
 </article>
 
 <style>
-  .project-card {
-    min-height: 100%;
-  }
-  .project-link {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: 24px;
-    min-height: 100%;
-  }
-  .project-top,
-  .project-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-  }
-  .project-year,
-  .project-bottom {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  h3 {
-    margin: 0;
-    font-family: 'Anton', sans-serif;
-    text-transform: uppercase;
-    line-height: 0.95;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-  }
-  p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 42ch;
-  }
+    .project-card {
+        border-top: 1px solid var(--line);
+    }
+    .project-link {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 16px 20px;
+    }
+    .project-top,
+    .project-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+    .project-year,
+    .project-bottom {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+    h3 {
+        margin: 0;
+        font-family: "Archivo Black", sans-serif;
+        text-transform: uppercase;
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        font-size: clamp(1.9rem, 3.8vw, 3.2rem);
+    }
+    p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 23rem;
+    }
 </style>
