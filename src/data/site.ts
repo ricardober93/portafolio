@@ -538,6 +538,39 @@ export const localeData: Record<Locale, LocaleContent> = {
         featured: true,
       },
       {
+        slug: 'tingo-tingo-tango',
+        title: { en: 'Tingo Tingo Tango', es: 'Tingo Tingo Tango' },
+        category: { en: 'Browser game', es: 'Juego web' },
+        year: '2026',
+        status: { en: 'Public', es: 'Público' },
+        summary: {
+          en: 'A one-device local game that I built as a playable frontend architecture case study.',
+          es: 'Un juego local para un solo dispositivo que construí como caso de estudio de arquitectura frontend.',
+        },
+        description: {
+          en: 'A React + Vite project where game feel, browser APIs, and code structure had to work together without turning into ad hoc logic.',
+          es: 'Un proyecto en React + Vite donde la sensación del juego, las APIs del navegador y la estructura del código tenían que convivir sin caer en lógica improvisada.',
+        },
+        challenge: {
+          en: 'Build a simple game that still proves architecture decisions, explainable randomness, and reliable browser-side interactions.',
+          es: 'Construir un juego simple que igual demostrara decisiones de arquitectura, aleatoriedad explicable e interacciones confiables en el navegador.',
+        },
+        solution: {
+          en: 'I organized the app around Zustand, explicit game services, and browser adapters for audio, wake lock, fullscreen, haptics, and persistence.',
+          es: 'Organicé la app alrededor de Zustand, servicios explícitos del juego y adapters del navegador para audio, wake lock, fullscreen, háptica y persistencia.',
+        },
+        impact: {
+          en: 'It shows I can turn a small product into a sharp frontend case study with real technical decisions behind the interaction.',
+          es: 'Muestra que puedo convertir un producto pequeño en un caso sólido de frontend con decisiones técnicas reales detrás de la interacción.',
+        },
+        stack: ['React', 'TypeScript', 'Vite', 'Zustand', 'Browser APIs'],
+        links: [
+          { label: { en: 'GitHub', es: 'GitHub' }, href: 'https://github.com/ricardober93/tingo-tingo-tango' },
+          { label: { en: 'Demo', es: 'Demo' }, href: 'https://tingo-tingo-tango.vercel.app/' },
+        ],
+        featured: true,
+      },
+      {
         slug: 'vector-map',
         title: { en: 'Vector Map', es: 'Vector Map' },
         category: { en: 'Python / data', es: 'Python / datos' },
@@ -1114,6 +1147,39 @@ export const localeData: Record<Locale, LocaleContent> = {
         },
         stack: ['Nx', 'Microfrontends', 'TypeScript', 'Modular UI'],
         links: [{ label: { en: 'GitHub', es: 'GitHub' }, href: 'https://github.com/ricardober93/micro-frontend-farm-admin' }],
+        featured: true,
+      },
+      {
+        slug: 'tingo-tingo-tango',
+        title: { en: 'Tingo Tingo Tango', es: 'Tingo Tingo Tango' },
+        category: { en: 'Browser game', es: 'Juego web' },
+        year: '2026',
+        status: { en: 'Public', es: 'Público' },
+        summary: {
+          en: 'A one-device local game that I built as a playable frontend architecture case study.',
+          es: 'Un juego local para un solo dispositivo que construí como caso de estudio de arquitectura frontend.',
+        },
+        description: {
+          en: 'A React + Vite project where game feel, browser APIs, and code structure had to work together without turning into ad hoc logic.',
+          es: 'Un proyecto en React + Vite donde la sensación del juego, las APIs del navegador y la estructura del código tenían que convivir sin caer en lógica improvisada.',
+        },
+        challenge: {
+          en: 'Build a simple game that still proves architecture decisions, explainable randomness, and reliable browser-side interactions.',
+          es: 'Construir un juego simple que igual demostrara decisiones de arquitectura, aleatoriedad explicable e interacciones confiables en el navegador.',
+        },
+        solution: {
+          en: 'I organized the app around Zustand, explicit game services, and browser adapters for audio, wake lock, fullscreen, haptics, and persistence.',
+          es: 'Organicé la app alrededor de Zustand, servicios explícitos del juego y adapters del navegador para audio, wake lock, fullscreen, háptica y persistencia.',
+        },
+        impact: {
+          en: 'It shows I can turn a small product into a sharp frontend case study with real technical decisions behind the interaction.',
+          es: 'Muestra que puedo convertir un producto pequeño en un caso sólido de frontend con decisiones técnicas reales detrás de la interacción.',
+        },
+        stack: ['React', 'TypeScript', 'Vite', 'Zustand', 'Browser APIs'],
+        links: [
+          { label: { en: 'GitHub', es: 'GitHub' }, href: 'https://github.com/ricardober93/tingo-tingo-tango' },
+          { label: { en: 'Demo', es: 'Demo' }, href: 'https://tingo-tingo-tango.vercel.app/' },
+        ],
         featured: true,
       },
       {
