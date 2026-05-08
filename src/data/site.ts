@@ -731,6 +731,70 @@ export const localeData: Record<Locale, LocaleContent> = {
         ],
         featured: true,
       },
+      {
+        slug: 'sunfarm-website',
+        title: { en: 'SunFarm', es: 'SunFarm' },
+        category: { en: 'Web app', es: 'Web app' },
+        year: '2026',
+        status: { en: 'Public', es: 'Público' },
+        summary: {
+          en: 'A subscription platform for legume delivery with auth, payments, and customer management.',
+          es: 'Una plataforma de suscripciones para domicilio de legumbres con autenticación, pagos y gestión de clientes.',
+        },
+        description: {
+          en: 'A full-stack web app where customers subscribe to biweekly legume plans, manage orders from a dashboard, and pay via Bold — while admins track orders and payments in a separate panel.',
+          es: 'Una web app full-stack donde los clientes se suscriben a planes quincenales de legumbres, gestionan pedidos desde un dashboard y pagan con Bold — mientras los admins rastrean pedidos y pagos en un panel separado.',
+        },
+        challenge: {
+          en: 'Build a real e-commerce flow in Spanish: signup with email verification, payment integration, order tracking, and an admin dashboard — all without a third-party store.',
+          es: 'Construir un flujo e-commerce real en español: registro con verificación de email, integración de pagos, seguimiento de pedidos y un dashboard admin — todo sin una tienda de terceros.',
+        },
+        solution: {
+          en: 'I wired Better Auth for sessions, Bold for checkout, Drizzle ORM for the Postgres schema, and Astro SSR to keep pages fast with server-side logic where it matters.',
+          es: 'Conecté Better Auth para sesiones, Bold para checkout, Drizzle ORM para el esquema en Postgres y Astro SSR para mantener las páginas rápidas con lógica de servidor donde importa.',
+        },
+        impact: {
+          en: 'It shows I can ship a complete product — auth, payments, database, admin tools — not just a frontend prototype.',
+          es: 'Muestra que puedo lanzar un producto completo — autenticación, pagos, base de datos, herramientas admin — no solo un prototipo frontend.',
+        },
+        stack: ['Astro', 'Preact', 'Better Auth', 'PostgreSQL', 'Bold', 'Tailwind CSS'],
+        links: [
+          { label: { en: 'Demo', es: 'Demo' }, href: 'https://sunfarm-website-rc4o9a.sv-0.wabot.dev/' },
+        ],
+        featured: true,
+      },
+      {
+        slug: 'maderalab',
+        title: { en: 'MaderaLab', es: 'MaderaLab' },
+        category: { en: '3D web app', es: 'App web 3D' },
+        year: '2026',
+        status: { en: 'Public', es: 'Público' },
+        summary: {
+          en: 'A browser-based 3D furniture designer that generates construction blueprints and PDF cut lists.',
+          es: 'Un diseñador de muebles 3D en el navegador que genera planos de construcción y listas de corte en PDF.',
+        },
+        description: {
+          en: 'A client-side app with a parametric engine that builds 3D furniture from dimensions, lets users assign materials and colors per piece, and exports orthographic views with dimension annotations and categorized cut lists.',
+          es: 'Una app client-side con un motor paramétrico que construye muebles en 3D a partir de dimensiones, permite asignar materiales y colores por pieza, y exporta vistas ortográficas con cotas y listas de corte categorizadas.',
+        },
+        challenge: {
+          en: 'Build a real 3D design tool that runs entirely in the browser — no backend, no signup — and still produces accurate construction documents a carpenter can use.',
+          es: 'Construir una herramienta de diseño 3D real que funcione completamente en el navegador — sin backend, sin registro — y que produzca documentos de construcción precisos que un carpintero pueda usar.',
+        },
+        solution: {
+          en: 'I used React Three Fiber for the 3D viewport, a Zustand store for the parametric engine, and jsPDF to compose blueprints with orthographic projections, dimension lines, and hardware counts.',
+          es: 'Usé React Three Fiber para el viewport 3D, un store de Zustand para el motor paramétrico y jsPDF para componer planos con proyecciones ortográficas, líneas de cota y conteo de herrajes.',
+        },
+        impact: {
+          en: 'It demonstrates depth beyond typical UI work — parametric modeling, real-time 3D, and document generation, all in a single client-side application.',
+          es: 'Demuestra profundidad más allá de UI típica — modelado paramétrico, 3D en tiempo real y generación de documentos, todo en una sola aplicación client-side.',
+        },
+        stack: ['React', 'Three.js', 'React Three Fiber', 'TypeScript', 'Zustand', 'jsPDF'],
+        links: [
+          { label: { en: 'Demo', es: 'Demo' }, href: 'https://maderalab-94cde3.sv-0.wabot.dev/' },
+        ],
+        featured: true,
+      },
     ],
     posts: [
       {
@@ -1340,6 +1404,70 @@ export const localeData: Record<Locale, LocaleContent> = {
         stack: ['TypeScript', 'JavaScript', 'CSS', 'Web'],
         links: [
           { label: { en: 'GitHub', es: 'GitHub' }, href: 'https://github.com/ricardober93/learn-to-speak' },
+        ],
+        featured: true,
+      },
+      {
+        slug: 'sunfarm-website',
+        title: { en: 'SunFarm', es: 'SunFarm' },
+        category: { en: 'Web app', es: 'Web app' },
+        year: '2026',
+        status: { en: 'Public', es: 'Público' },
+        summary: {
+          en: 'A subscription platform for legume delivery with auth, payments, and customer management.',
+          es: 'Una plataforma de suscripciones para domicilio de legumbres con autenticación, pagos y gestión de clientes.',
+        },
+        description: {
+          en: 'A full-stack web app where customers subscribe to biweekly legume plans, manage orders from a dashboard, and pay via Bold — while admins track orders and payments in a separate panel.',
+          es: 'Una web app full-stack donde los clientes se suscriben a planes quincenales de legumbres, gestionan pedidos desde un dashboard y pagan con Bold — mientras los admins rastrean pedidos y pagos en un panel separado.',
+        },
+        challenge: {
+          en: 'Build a real e-commerce flow in Spanish: signup with email verification, payment integration, order tracking, and an admin dashboard — all without a third-party store.',
+          es: 'Construir un flujo e-commerce real en español: registro con verificación de email, integración de pagos, seguimiento de pedidos y un dashboard admin — todo sin una tienda de terceros.',
+        },
+        solution: {
+          en: 'I wired Better Auth for sessions, Bold for checkout, Drizzle ORM for the Postgres schema, and Astro SSR to keep pages fast with server-side logic where it matters.',
+          es: 'Conecté Better Auth para sesiones, Bold para checkout, Drizzle ORM para el esquema en Postgres y Astro SSR para mantener las páginas rápidas con lógica de servidor donde importa.',
+        },
+        impact: {
+          en: 'It shows I can ship a complete product — auth, payments, database, admin tools — not just a frontend prototype.',
+          es: 'Muestra que puedo lanzar un producto completo — autenticación, pagos, base de datos, herramientas admin — no solo un prototipo frontend.',
+        },
+        stack: ['Astro', 'Preact', 'Better Auth', 'PostgreSQL', 'Bold', 'Tailwind CSS'],
+        links: [
+          { label: { en: 'Demo', es: 'Demo' }, href: 'https://sunfarm-website-rc4o9a.sv-0.wabot.dev/' },
+        ],
+        featured: true,
+      },
+      {
+        slug: 'maderalab',
+        title: { en: 'MaderaLab', es: 'MaderaLab' },
+        category: { en: '3D web app', es: 'App web 3D' },
+        year: '2026',
+        status: { en: 'Public', es: 'Público' },
+        summary: {
+          en: 'A browser-based 3D furniture designer that generates construction blueprints and PDF cut lists.',
+          es: 'Un diseñador de muebles 3D en el navegador que genera planos de construcción y listas de corte en PDF.',
+        },
+        description: {
+          en: 'A client-side app with a parametric engine that builds 3D furniture from dimensions, lets users assign materials and colors per piece, and exports orthographic views with dimension annotations and categorized cut lists.',
+          es: 'Una app client-side con un motor paramétrico que construye muebles en 3D a partir de dimensiones, permite asignar materiales y colores por pieza, y exporta vistas ortográficas con cotas y listas de corte categorizadas.',
+        },
+        challenge: {
+          en: 'Build a real 3D design tool that runs entirely in the browser — no backend, no signup — and still produces accurate construction documents a carpenter can use.',
+          es: 'Construir una herramienta de diseño 3D real que funcione completamente en el navegador — sin backend, sin registro — y que produzca documentos de construcción precisos que un carpintero pueda usar.',
+        },
+        solution: {
+          en: 'I used React Three Fiber for the 3D viewport, a Zustand store for the parametric engine, and jsPDF to compose blueprints with orthographic projections, dimension lines, and hardware counts.',
+          es: 'Usé React Three Fiber para el viewport 3D, un store de Zustand para el motor paramétrico y jsPDF para componer planos con proyecciones ortográficas, líneas de cota y conteo de herrajes.',
+        },
+        impact: {
+          en: 'It demonstrates depth beyond typical UI work — parametric modeling, real-time 3D, and document generation, all in a single client-side application.',
+          es: 'Demuestra profundidad más allá de UI típica — modelado paramétrico, 3D en tiempo real y generación de documentos, todo en una sola aplicación client-side.',
+        },
+        stack: ['React', 'Three.js', 'React Three Fiber', 'TypeScript', 'Zustand', 'jsPDF'],
+        links: [
+          { label: { en: 'Demo', es: 'Demo' }, href: 'https://maderalab-94cde3.sv-0.wabot.dev/' },
         ],
         featured: true,
       },
