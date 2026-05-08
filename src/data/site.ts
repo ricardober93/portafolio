@@ -268,7 +268,7 @@ export const localeData: Record<Locale, LocaleContent> = {
       subheadline:
         'I build software end to end with a design background in the mix. That means frontend judgment, fullstack ownership, and UX/UI context when product decisions get messy.',
       description:
-        'Portfolio of Ricardo Bermudez. Senior software engineering with frontend depth, product judgment, and a design-aware approach to delivery.',
+        'Portfolio of Ricardo Bermudez. Senior Software Engineer with frontend depth, product judgment, and a design-aware approach to delivery.',
       whatsapp: '+573145063381',
       telegram: '@ricardobo93',
       location: 'LatAm / Remote',
@@ -286,7 +286,7 @@ export const localeData: Record<Locale, LocaleContent> = {
     ],
     expertise: [
       {
-        title: { en: 'Product ownership', es: 'Ownership de producto' },
+        title: { en: 'Product ownership', es: 'Liderazgo de producto' },
         description: {
           en: 'I turn vague requirements into shipping code, clear interfaces, and decisions the next engineer can still work with.',
           es: 'Convierto requerimientos ambiguos en código entregable, interfaces claras y decisiones que otro ingeniero puede seguir usando.',
@@ -352,7 +352,7 @@ export const localeData: Record<Locale, LocaleContent> = {
       {
         company: { en: 'Bolsiyo', es: 'Bolsiyo' },
         role: { en: 'Senior Frontend Developer', es: 'Senior Frontend Developer' },
-        period: { en: 'Startup stage', es: 'Etapa startup' },
+        period: { en: 'Startup stage', es: 'Fase de startup' },
         summary: {
           en: 'Worked in Angular and proposed a DDD-oriented frontend structure for complex changes in a fast-moving startup.',
           es: 'Trabajé en Angular y propuse una estructura frontend orientada a DDD para cambios complejos en una startup en movimiento.',
@@ -361,7 +361,7 @@ export const localeData: Record<Locale, LocaleContent> = {
       {
         company: { en: 'IES', es: 'IES' },
         role: { en: 'Frontend Developer', es: 'Frontend Developer' },
-        period: { en: 'Large project', es: 'Proyecto grande' },
+        period: { en: 'Large project', es: 'Proyecto a gran escala' },
         summary: {
           en: 'Owned the frontend of a large project and kept the implementation moving across a substantial surface area.',
           es: 'Me encargué del frontend de un proyecto grande y mantuve la implementación avanzando sobre una superficie amplia.',
@@ -437,7 +437,7 @@ export const localeData: Record<Locale, LocaleContent> = {
         title: 'Projects | Ricardo Bermudez',
         description: 'Selected projects that show product complexity, frontend depth, and fullstack delivery.',
         eyebrow: 'Selected work',
-        titleText: 'PROJECTS WITH REAL CONSTRAINTS.',
+        titleText: 'BUILT TO SHIP.',
         lead:
           'Projects that show product ownership, frontend depth, fullstack delivery, and the kind of complexity that senior engineers spend their time untangling.',
         manifestoEyebrow: 'What the work proves',
@@ -800,8 +800,8 @@ export const localeData: Record<Locale, LocaleContent> = {
       {
         slug: 'diseno-estrategia-y-codigo',
         title: {
-          en: 'My stack is not a checklist; it is how I build with less friction',
-          es: 'Mi stack no es una lista; es la forma en que construyo con menos fricción',
+          en: 'Design, strategy, and code: how I think about products that matter',
+          es: 'Diseño, estrategia y código: cómo pienso productos que de verdad importan',
         },
         date: '2026-03-12',
         category: { en: 'Stack', es: 'Stack' },
@@ -962,7 +962,7 @@ export const localeData: Record<Locale, LocaleContent> = {
     ],
     expertise: [
       {
-        title: { en: 'Product ownership', es: 'Ownership de producto' },
+        title: { en: 'Product ownership', es: 'Liderazgo de producto' },
         description: {
           en: 'I turn vague requirements into shipping code, clear interfaces, and decisions the next engineer can still work with.',
           es: 'Convierto requerimientos ambiguos en código entregable, interfaces claras y decisiones que otro ingeniero puede seguir usando.',
@@ -1028,7 +1028,7 @@ export const localeData: Record<Locale, LocaleContent> = {
       {
         company: { en: 'Bolsiyo', es: 'Bolsiyo' },
         role: { en: 'Senior Frontend Developer', es: 'Senior Frontend Developer' },
-        period: { en: 'Startup stage', es: 'Etapa startup' },
+        period: { en: 'Startup stage', es: 'Fase de startup' },
         summary: {
           en: 'Worked in Angular and proposed a DDD-oriented frontend structure for complex changes in a fast-moving startup.',
           es: 'Trabajé en Angular y propuse una estructura frontend orientada a DDD para cambios complejos en una startup en movimiento.',
@@ -1037,7 +1037,7 @@ export const localeData: Record<Locale, LocaleContent> = {
       {
         company: { en: 'IES', es: 'IES' },
         role: { en: 'Frontend Developer', es: 'Frontend Developer' },
-        period: { en: 'Large project', es: 'Proyecto grande' },
+        period: { en: 'Large project', es: 'Proyecto a gran escala' },
         summary: {
           en: 'Owned the frontend of a large project and kept the implementation moving across a substantial surface area.',
           es: 'Me encargué del frontend de un proyecto grande y mantuve la implementación avanzando sobre una superficie amplia.',
@@ -1113,7 +1113,7 @@ export const localeData: Record<Locale, LocaleContent> = {
         title: 'Proyectos | Ricardo Bermudez',
         description: 'Proyectos seleccionados que muestran complejidad de producto, profundidad frontend y delivery fullstack.',
         eyebrow: 'Trabajo seleccionado',
-        titleText: 'PROYECTOS CON RESTRICCIONES REALES.',
+        titleText: 'CONSTRUIDOS PARA ENTREGAR.',
         lead:
           'Proyectos que muestran ownership de producto, profundidad frontend, delivery fullstack y el tipo de complejidad que un senior termina desatando.',
         manifestoEyebrow: 'Lo que el trabajo demuestra',
